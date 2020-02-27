@@ -26,17 +26,31 @@ describe('Application launch', function () {
     })
   })*/
 
-  it('calculates', async function(){
+  it('Calculation 1', async function(){
     var n1 = '4';
     var n2 = '10';
-    var expectedResult = parseInt(n1,10) + parseInt(n2,10);
+
     this.app.client.addValue('#number1', n1);
     this.app.client.addValue('#number2', n2);
 
     this.app.client.click('#submitBtn');
     await this.app.client.waitUntilWindowLoaded();
-    this.app.client.getText('#result').then(function (result) {
-      assert.equal(result, expectedResult);
+    return this.app.client.getText('#result').then(function (result) {
+      assert.equal(parseFloat(result,10), 14);
+    });
+  })
+
+  it('Calculation 2', async function(){
+    var n1 = '4,89';
+    var n2 = '-4,1';
+
+    this.app.client.addValue('#number1', n1);
+    this.app.client.addValue('#number2', n2);
+
+    this.app.client.click('#submitBtn');
+    await this.app.client.waitUntilWindowLoaded();
+    return this.app.client.getText('#result').then(function (result) {
+      assert.equal(parseFloat(result,10), 0.79);
     });
   })
 })
