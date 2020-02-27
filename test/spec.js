@@ -20,18 +20,23 @@ describe('Application launch', function () {
     }
   })
 
-  it('shows an initial window', function () {
+  /*it('shows an initial window', function () {
     return this.app.client.getWindowCount().then(function (count) {
       assert.equal(count, 1)
     })
-  })
+  })*/
 
   it('calculates', async function(){
-    this.app.client.setValue('#number1', 4);
-    this.app.client.setValue('#number2', 10);
+    var n1 = '4';
+    var n2 = '10';
+    var expectedResult = parseInt(n1,10) + parseInt(n2,10);
+    this.app.client.addValue('#number1', n1);
+    this.app.client.addValue('#number2', n2);
+
     this.app.client.click('#submitBtn');
     await this.app.client.waitUntilWindowLoaded();
-    const result = await this.app.client.getHTML('#result');
-    assert.ok(result);
+    this.app.client.getText('#result').then(function (result) {
+      assert.equal(result, expectedResult);
+    });
   })
 })
