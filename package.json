@@ -1,0 +1,19 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "mocha"
+  },
+  "author": "Patrick Evers",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^8.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^7.0.1",
+    "spectron": "^10.0.1"
+  }
+}
