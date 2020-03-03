@@ -4,71 +4,55 @@ var number1 = 0;
 var number2 = 0;
 
 document.getElementById('addBtn').addEventListener('click', ()=>{
-
-    setValues(input1, input2);
-
-    var result = add(number1, number2);
-
-    showResult(result);
+    add(input1, input2);
 })
 
 document.getElementById('subtractBtn').addEventListener('click', ()=>{
-
-    setValues(input1, input2);
-
-    var result = subtract(number1, number2);
-
-    showResult(result);
+    subtract(input1, input2);    
 })
 
 document.getElementById('multiplyBtn').addEventListener('click', ()=>{
-
-    setValues(input1, input2);
-
-    var result = multiply(number1, number2);
-
-    showResult(result);
+    multiply(input1, input2);
 })
 
 document.getElementById('divideBtn').addEventListener('click', ()=>{
-
-    setValues(input1, input2);
-
-    var result = divide(number1, number2);
-
-    showResult(result);
+    divide(input1, input2);
 })
 
-function add(number1, number2){
+function add(input1, input2){
+    setValues(input1, input2);
     var result = number1 + number2;
     
     if(result % 1 === 0){
-        return result;
+        showResult(result);
     }
     else{
-        return result.toFixed(countDecimals(number1,number2));
+        showResult(result.toFixed(countDecimals(number1,number2)));
     }
 }
 
-function subtract(number1, number2){
+function subtract(input1, input2){
+    setValues(input1, input2);
     var result = number1 - number2;
     
     if(result % 1 === 0){
-        return result;
+        showResult(result);
     }
     else{
-        return result.toFixed(countDecimals(number1,number2));
+        showResult(result.toFixed(countDecimals(number1,number2)));
     }
 }
 
-function multiply(number1, number2){
+function multiply(input1, input2){
+    setValues(input1, input2);
     var result = number1 * number2;
-    return result;
+    showResult(result);
 }
 
-function divide(number1, number2){
+function divide(input1, input2){
+    setValues(input1, input2);
     var result = number1 / number2;
-    return result;
+    showResult(result);
 }
 
 function setValues(input1, input2){
