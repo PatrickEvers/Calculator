@@ -4,55 +4,49 @@ var number1 = 0;
 var number2 = 0;
 
 document.getElementById('addBtn').addEventListener('click', ()=>{
-    add(input1, input2);
+    calculate(input1, input2, '+');
 })
 
 document.getElementById('subtractBtn').addEventListener('click', ()=>{
-    subtract(input1, input2);    
+    calculate(input1, input2, '-');    
 })
 
 document.getElementById('multiplyBtn').addEventListener('click', ()=>{
-    multiply(input1, input2);
+    calculate(input1, input2, '*');
 })
 
 document.getElementById('divideBtn').addEventListener('click', ()=>{
-    divide(input1, input2);
+    calculate(input1, input2, '/');
 })
 
-function add(input1, input2){
+function calculate(input1, input2, operator){
     setValues(input1, input2);
-    var result = number1 + number2;
-    
-    if(result % 1 === 0){
+    var result;
+
+    switch(operator){
+        case '+':
+            result = number1 + number2;
+            break;
+        case '-':
+            result = number1 - number2;
+            break;
+        case '*':
+            result = number1 * number2;
+            break;
+        case '/':
+            result = number1 / number2;
+            break;
+        default:
+            result = 0;
+            break;
+    }
+
+    if(result % 1 === 0 || operator == '/'){
         showResult(result);
     }
     else{
         showResult(result.toFixed(countDecimals(number1,number2)));
     }
-}
-
-function subtract(input1, input2){
-    setValues(input1, input2);
-    var result = number1 - number2;
-    
-    if(result % 1 === 0){
-        showResult(result);
-    }
-    else{
-        showResult(result.toFixed(countDecimals(number1,number2)));
-    }
-}
-
-function multiply(input1, input2){
-    setValues(input1, input2);
-    var result = number1 * number2;
-    showResult(result);
-}
-
-function divide(input1, input2){
-    setValues(input1, input2);
-    var result = number1 / number2;
-    showResult(result);
 }
 
 function setValues(input1, input2){
