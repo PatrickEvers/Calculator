@@ -105,4 +105,84 @@ describe('Application launch', function () {
       assert.equal(parseFloat(result,10), -2);
     });
   })
+
+  it('Multiplication 1', async function(){
+    var n1 = '4';
+    var n2 = '4';
+
+    this.app.client.addValue('#number1', n1);
+    this.app.client.addValue('#number2', n2);
+
+    this.app.client.click('#multiplyBtn');
+    await this.app.client.waitUntilWindowLoaded();
+    return this.app.client.getText('#result').then(function (result) {
+      assert.equal(parseFloat(result,10), 16);
+    });
+  })
+
+  it('Multiplication 2', async function(){
+    var n1 = '2.2';
+    var n2 = '-2';
+
+    this.app.client.addValue('#number1', n1);
+    this.app.client.addValue('#number2', n2);
+
+    this.app.client.click('#multiplyBtn');
+    await this.app.client.waitUntilWindowLoaded();
+    return this.app.client.getText('#result').then(function (result) {
+      assert.equal(parseFloat(result,10), -4.4);
+    });
+  })
+
+  it('Multiplication 3', async function(){
+    var n = '2';
+
+    this.app.client.addValue('#number2', n);
+
+    this.app.client.click('#multiplyBtn');
+    await this.app.client.waitUntilWindowLoaded();
+    return this.app.client.getText('#result').then(function (result) {
+      assert.equal(parseFloat(result,10), 0);
+    });
+  })
+
+  it('Division 1', async function(){
+    var n1 = '8';
+    var n2 = '2';
+
+    this.app.client.addValue('#number1', n1);
+    this.app.client.addValue('#number2', n2);
+
+    this.app.client.click('#divideBtn');
+    await this.app.client.waitUntilWindowLoaded();
+    return this.app.client.getText('#result').then(function (result) {
+      assert.equal(parseFloat(result,10), 4);
+    });
+  })
+
+  it('Division 2', async function(){
+    var n1 = '-7';
+    var n2 = '3.5';
+
+    this.app.client.addValue('#number1', n1);
+    this.app.client.addValue('#number2', n2);
+
+    this.app.client.click('#divideBtn');
+    await this.app.client.waitUntilWindowLoaded();
+    return this.app.client.getText('#result').then(function (result) {
+      assert.equal(parseFloat(result,10), -2);
+    });
+  })
+
+  it('Division 3', async function(){
+    var n = '9';
+
+    this.app.client.addValue('#number2', n);
+
+    this.app.client.click('#divideBtn');
+    await this.app.client.waitUntilWindowLoaded();
+    return this.app.client.getText('#result').then(function (result) {
+      assert.equal(parseFloat(result,10), 0);
+    });
+  })
 })
