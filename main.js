@@ -9,7 +9,7 @@ app.on('ready', () => {
             nodeIntegration: true
         }
     })
-    win.loadURL(`file://${__dirname}/index.html`)
+    win.loadURL(`file://${__dirname}/calculator/index.html`)
 })
 
 exports.openWindow = (filename) => {
